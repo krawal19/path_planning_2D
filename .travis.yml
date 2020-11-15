@@ -18,11 +18,13 @@ before_install:
 
 install:
   - sudo apt update -qq
+  - gem install coveralls-lcov	
   - sudo apt install -qq libboost-all-dev
   - sudo apt-get install -y -qq lcov
   - sudo apt update -qq
 
 script:
+  - PARENTDIR=$(pwd) 
   - mkdir build
   - cd build
   - cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ../
@@ -31,7 +33,11 @@ script:
   - test/pathPlanningTest
 
 after_sucess:
-  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+  - make gtest
+  - lcov --directory $PARENTDIR/build/test  --capture --output-file coverage.info # capture coverage info
+  - lcov --remove coverage.info 'tests/*' 'lib/*' 'external/*' 'cmake/*' '/usr/*' '$PARENTDIR/lib/*' --output-file coverage.info # filter out system and test code
+  - lcov --list coverage.info # debug before upload
+  - coveralls-lcov coverage.info #--repo-token _____ coverage.info # uploads to coveralls
 
 notifications:
   email: false

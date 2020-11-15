@@ -1,7 +1,7 @@
 <h1 align=center> PATH PLANNING 2D </h1>
 
 [![Build Status](https://travis-ci.org/krawal19/path_planning_2D.svg?branch=master)](https://travis-ci.org/krawal19/path_planning_2D)
-[![Coverage Status](https://coveralls.io/repos/github/krawal19/path_planning_2D/badge.svg)](https://coveralls.io/github/krawal19/path_planning_2D)
+[![Coverage Status](https://coveralls.io/repos/github/krawal19/path_planning_2D/badge.svg?branch=master)](https://coveralls.io/github/krawal19/path_planning_2D?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ## About
