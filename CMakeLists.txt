@@ -2,16 +2,27 @@ cmake_minimum_required(VERSION 3.10.2)
 project(path_planning)
 
 set(CMAKE_CXX_FLAGS "${CAMKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
-find_package( Boost REQUIRED COMPONENTS system)
+option(COVERAGE "Generate Coverage Data" ON)
 
-include_directories(${Boost_INCLUDE_DIRS})
-include_directories(include)
+if (COVERAGE)
+    include(CodeCoverage)
+    set(LCOV_REMOVE_EXTRA "'vendor/*'")
+    setup_target_for_coverage(code_coverage test/cpp-test coverage)
+    set(COVERAGE_SRCS src/main.cpp include/path_planning.h)
 
-add_executable (
-  pathPlanning
-  src/main.cpp 
-  src/path_planning.cpp)
+    SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+    SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+    SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
+else()
+    set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -g")
+endif()
 
-add_subdirectory(lib/googletest)
+include(CMakeToolsHelpers OPTIONAL)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_STANDARD 14)
+
+add_subdirectory(src)
 add_subdirectory(test)
+add_subdirectory(lib/googletest)

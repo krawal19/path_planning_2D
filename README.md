@@ -42,18 +42,14 @@ The project requires the following dependenices:
 
 ## Program installation
 ```
-git clone https://github.com/krawal19/path_planning_2d.git
+git clone --recursive https://github.com/krawal19/path_planning_2d.git
 cd path_planning_2d
-mkdir lib
-cd lib 
-git clone https://github.com/google/googletest/
-cd ..
 mkdir build
 cd build
 cmake ..
 make
 
-Run program: ./pathPlanning
+Run program: ./src/pathPlanning
 ```
 ## Running tests via command line
 To check the tests you can run the following command.
@@ -88,7 +84,7 @@ cd build
 cmake ..
 make
 
-Run program: ./pathPlanning
+Run program: ./src/pathPlanning
 ```
 -  Running the program will print output as follows:
 0. Here the grid used is 
