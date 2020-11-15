@@ -122,6 +122,15 @@ TEST_F(PathPlanningFixture, PathPlannerTest) {
     planner->setParams(grid_2d, start, goal);
     planner->pathPlanner(&generatedPath, "DIJKSTRA");
     EXPECT_EQ(6, generatedPath.size());
+
+    // Unable to reach goal condition
+    grid_2d[1][4] = 1;
+    grid_2d[0][3] = 1;
+    grid_2d[1][3] = 1;
+    generatedPath = {};
+    planner->setParams(grid_2d, start, goal);
+    planner->pathPlanner(&generatedPath, "DIJKSTRA");
+    EXPECT_EQ(true, generatedPath.empty());
     
     // Checking not availabe type planner inputs
     generatedPath = {};

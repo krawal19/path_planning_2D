@@ -8,7 +8,7 @@ option(COVERAGE "Generate Coverage Data" ON)
 
 if (COVERAGE)
     include(CodeCoverage)
-    set(LCOV_REMOVE_EXTRA "'lib/*'")
+    set(LCOV_REMOVE_EXTRA "'${PROJECT_SOURCE_DIR}/lib/*'")
     setup_target_for_coverage(code_coverage test/pathPlanningTest coverage)
     set(COVERAGE_SRCS src/main.cpp include/path_planning.h)
 
