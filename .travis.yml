@@ -25,9 +25,10 @@ before_script:
 script:
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Coverage
+  - cmake
   - make
-  - ./pathPlanning ./test/pathPlanning
+  - /pathPlanning
+  - ./test/pathPlanning
 
 after_sucess:
   - cd ~/path_planning_2D/build
@@ -35,3 +36,6 @@ after_sucess:
   - lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*test_*' '*_test*' --output-file coverage.info
   - lcov --list coverage.info
   - coveralls-lcov coverage.info
+
+notifications:
+  email: false
