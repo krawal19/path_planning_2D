@@ -40,9 +40,9 @@
  *
  */
 
-#include "path_planning.h"
-
 #include <iostream>
+
+#include "path_planning.h"
 
 int main(int argc, char** argv) {
     // Here 0 is free position and 1 is obstacle
@@ -52,20 +52,21 @@ int main(int argc, char** argv) {
                                           {0,1,0,1,1},
                                           {0,0,0,1,0}};
     std::pair<int,int> start, goal;
-    start.first = 0; // Add start's 1st index
-    start.second = 0; // Add start's 2nd index
-    goal.first = 0; // Add goal's 1st index
-    goal.second = 4; // Add goal's 2nd index
+    start.first = 0;  // Add start's 1st index
+    start.second = 0;  // Add start's 2nd index
+    goal.first = 0;  // Add goal's 1st index
+    goal.second = 4;  // Add goal's 2nd index
 
-    // Creating the PathPlanning object and calling the planner 
+    // Creating the PathPlanning object and calling the planner
     PathPlanning *plan = new PathPlanning();
     std::vector<boost::optional<std::pair<int,int>>> generatedPath;
     plan->plannerMain(grid_2d, start, goal, &generatedPath, "DIJKSTRA");
 
     // Printing out path if generated
     if (generatedPath.size() > 0) {
-        for (auto index: generatedPath) 
-            std::cout << "(" << index.get().first << ", " << index.get().second << ") ";
+        for (auto index : generatedPath) 
+            std::cout << "(" << index.get().first << ", " 
+                      << index.get().second << ") ";
         std::cout << std::endl;
     }
     return 0;

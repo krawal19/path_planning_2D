@@ -20,11 +20,7 @@ install:
   - sudo apt update -qq
   - sudo apt install -qq libboost-all-dev
   - sudo apt-get install -y -qq lcov
-
-
-before_script:
-  - git clone https://github.com/google/googletest.git    lib/googletest
-  - pip install --user cpp-coveralls
+  - sudo apt update -qq
 
 script:
   - mkdir build
@@ -32,7 +28,7 @@ script:
   - cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ../
   - make
   - make code_coverage
-  - ./test/pathPlanning
+  - test/pathPlanningTest
 
 after_sucess:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"

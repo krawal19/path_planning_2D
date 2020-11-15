@@ -39,12 +39,12 @@
  *
  */
 
-#include "path_planning.h"
-
 #include <iostream>
 #include <queue>
 #include <map>
 #include <stack>
+
+#include "path_planning.h"
 
 PathPlanning::PathPlanning() {
     MIN_GRID_SIZE = 2;
@@ -113,7 +113,7 @@ bool PathPlanning::validPosition(const std::vector<std::vector<int>>& input_grid
         // Obstacle check of points
         bool on_obstacle_flag = true; // true if on obstacle else false
         if (valid_index_first && valid_index_second) {
-            if (input_grid[x][y] == 0) 
+            if (input_grid[x][y] == 0)
                 on_obstacle_flag = false;
             else
                 std::cout << "On obstacle, start/goal invalid!" << std::endl;
@@ -163,12 +163,12 @@ void PathPlanning::generateNeighbour(std::vector<index> *neighbours,
         int i = x + rows[n];
         int j = y + cols[n];
         // Checking validity of the generated index
-        if (i >= 0 && j >= 0 &&  i < size_row && j < size_col 
-            &&  (visited_set->find(std::make_pair(i,j)) == visited_set->end()) 
+        if (i >= 0 && j >= 0 &&  i < size_row && j < size_col
+            &&  (visited_set->find(std::make_pair(i, j)) == visited_set->end())
             && grid[i][j] < 1) {
             // Adding to the vector of neighbours and marking them as visited
-            neighbours->push_back(std::make_pair(i,j));
-            visited_set->insert(std::make_pair(i,j));
+            neighbours->push_back(std::make_pair(i, j));
+            visited_set->insert(std::make_pair(i, j));
         }
     }
 }
@@ -176,11 +176,11 @@ void PathPlanning::generateNeighbour(std::vector<index> *neighbours,
 void PathPlanning::dijkstra(std::vector<index>* generatedPath) {
     std::set<index> visited_set;
     std::map<index, index> prev_node;
-    std::vector<std::vector<int>> distance(grid_.size(), 
+    std::vector<std::vector<int>> distance(grid_.size(),
                                            std::vector<int>(grid_[0].size(), INT16_MAX));
-    std::priority_queue<std::pair<int,index>, 
-                        std::vector<std::pair<int,index>>, 
-                        std::greater<std::pair<int,index>>> vertex_queue;
+    std::priority_queue<std::pair<int, index>,
+                        std::vector<std::pair<int, index>>,
+                        std::greater<std::pair<int, index>>> vertex_queue;
     index node;
     bool goal_found_flag = false;
 
@@ -197,7 +197,8 @@ void PathPlanning::dijkstra(std::vector<index>* generatedPath) {
         vertex_queue.pop();
 
         // If goal found the exit the loop
-        if (node.get().first == goal_.get().first && node.get().second == goal_.get().second) {
+        if (node.get().first == goal_.get().first \
+            && node.get().second == goal_.get().second) {
             goal_found_flag = true;
             break;
         }
