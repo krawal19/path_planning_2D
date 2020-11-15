@@ -35,7 +35,8 @@
  *
  *  @section   DESCRIPTION
  *
- *  Starts the 
+ *  Calculates the path between start and goal on 2D grid using the PathPlanning 
+ *  class methods
  *
  */
 
@@ -67,6 +68,5 @@ int main(int argc, char** argv) {
             std::cout << "(" << index.get().first << ", " << index.get().second << ") ";
         std::cout << std::endl;
     }
-
     return 0;
 }
