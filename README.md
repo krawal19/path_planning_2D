@@ -1,5 +1,7 @@
 <h1 align=center> PATH PLANNING 2D </h1>
 
+[![Build Status](https://travis-ci.org/krawal19/path_planning_2D.svg?branch=master)](https://travis-ci.org/krawal19/path_planning_2D)
+[![Coverage Status](https://coveralls.io/repos/github/krawal19/path_planning_2D/badge.svg?branch=master)](https://coveralls.io/github/krawal19/path_planning_2D?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ## Project Overview
@@ -16,10 +18,10 @@ The library API provides wide variety of clean and optimized methods to check fo
 Each method of the path planning library is self sufficent to act as stand alone function. The functions offer zero memory leaks(verified from valgrind outputs). The API is Doxygen style documented and thus easier to use and understand.
 
 ## License
-This project is under the [BSD License](https://github.com/krawal19/path_planning_2d/-/tree/master/LICENSE).
+This project is under the [BSD License](https://github.com/krawal19/path_planning_2D/blob/master/LICENSE).
 
 ## Development using Solo Iterative Process (SIP) and Test-Driven Development (TDD)
-This library has been developed by following the Solo Iterative Process (SIP). You can take a look at the log details by going on this [LINK]()
+This library has been developed by following the Solo Iterative Process (SIP). You can take a look at the log details by going on this [LINK](https://docs.google.com/spreadsheets/d/1EAcQXJd5tFJDaMob8Aj5XTKwzOA-C5Kh_tcNpFDGPDE/edit?usp=sharing)
 
 ## Dependencies
 The project requires following dependenices:
