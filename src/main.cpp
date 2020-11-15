@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     std::pair<int,int> start, goal;
     start.first = 0; // Add start's 1st index
     start.second = 0; // Add start's 2nd index
-    goal.first = 4; // Add goal's 1st index
+    goal.first = 0; // Add goal's 1st index
     goal.second = 4; // Add goal's 2nd index
 
     // Creating the PathPlanning object and calling the planner 
